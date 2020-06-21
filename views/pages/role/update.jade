@@ -1,0 +1,14 @@
+extends ../../layout
+
+block content
+  h1= title
+  .col-sm-8   
+    .jumbotron
+      form(action="/users/role/"+role.id+"/update" method="post")
+        |name:
+        br
+        input(type="text" name="name" value=role.name)
+        br
+        br
+        br
+        input(type="submit")

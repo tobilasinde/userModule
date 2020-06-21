@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+  h1= title
+  h3
+    a(href="/users/department/create") Create Department
+  ol
+    each department in departments
+      li
+        a(href="/users/department/"+department.id)
+          =department.name
+        br
+        a(href="/users/department/"+department.id+"/update")
+          | Edit 
+        || 
+        a(href="/users/department/"+department.id+"/delete")
+          | Delete

@@ -1,0 +1,13 @@
+extends ../../layout
+
+block content
+  h1= title
+  .col-sm-8   
+    .jumbotron
+      form(action="/users/permission/"+permission.id+"/update" method="post")
+        |name:
+        br
+        input(type="text" name="name" value=permission.name)
+        br
+        br
+        input(type="submit")

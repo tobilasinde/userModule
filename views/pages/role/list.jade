@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+  h1= title
+  h3
+    a(href="/users/role/create") Create Role
+  ol
+    each role in roles
+      li
+        a(href="/users/role/"+role.id)
+          =role.name
+        br
+        a(href="/users/role/"+role.id+"/update")
+          | Edit 
+        || 
+        a(href="/users/role/"+role.id+"/delete")
+          | Delete

@@ -1,0 +1,14 @@
+extends ../../layout
+
+block content
+  h1= title
+  .col-sm-8   
+    .jumbotron
+      form(action="" method="post")
+        |name:
+        br
+        input(type="text" name="name" placeholder="Profile Name")
+        br
+        br
+        br
+        input(type="submit")

@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+  h1= title
+  h3
+    a(href="/users/business/create") Create Business
+  ol
+    each business in businesses
+      li
+        a(href="/users/business/"+business.id)
+          =business.name
+        br
+        a(href="/users/business/"+business.id+"/update")
+          | Edit 
+        || 
+        a(href="/users/business/"+business.id+"/delete")
+          | Delete

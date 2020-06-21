@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+  h1= title
+  h3
+    a(href="/users/profile/create") Create Profile
+  ol
+    each profile in profiles
+      li
+        a(href="/users/profile/"+profile.id)
+          =profile.name
+        br
+        a(href="/users/profile/"+profile.id+"/update")
+          | Edit 
+        || 
+        a(href="/users/profile/"+profile.id+"/delete")
+          | Delete

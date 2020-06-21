@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+  h1= title
+  .col-sm-8   
+    .jumbotron
+      form(action="" method="post")
+        |Post Title:
+        br
+        input(type="text" name="postTitle" value=post.postTitle)
+        br
+        |Post Body:
+        br
+        input(type="text" name="postBody" value=post.postBody)
+        br
+        br
+        input(type="submit")

@@ -1,0 +1,17 @@
+extends ../../layout
+
+block content
+  h1= title
+  h3
+    a(href="/users/permission/create") Create Permission
+  ol
+    each permission in permissions
+      li
+        a(href="/users/permission/"+permission.id)
+          =permission.name
+        br
+        a(href="/users/permission/"+permission.id+"/update")
+          | Edit 
+        || 
+        a(href="/users/permission/"+permission.id+"/delete")
+          | Delete

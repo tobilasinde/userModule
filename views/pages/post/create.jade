@@ -1,0 +1,31 @@
+extends ../../layout
+
+block content
+  h1= title
+  .col-sm-8   
+    .jumbotron
+      form(action="" method="post")
+        |Post Title:
+        br
+        input(type="text" name="postTitle" placeholder="Post Title")
+        br
+        |Last Name:
+        br
+        input(type="text" name="postBody" placeholder="Post Body")
+        br
+        |User:
+        br
+        select(name="UserId" id="user")
+          each user in users
+            option(value=user.id)
+              =user.userName
+        br
+        |Business:
+        br
+        select(name="BusinessId" id="business")
+          each business in businesses
+            option(value=business.id)
+              =business.name
+        br
+        br
+        input(type="submit")

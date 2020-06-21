@@ -1,0 +1,16 @@
+extends ../../layout
+
+block content
+  h1= title
+  h3
+    a(href="/users/create") Create User
+  ol
+    each user in users
+      li
+        a(href="/users/"+user.id+"/details")
+          =user.userName
+        br
+        a(href="/users/"+user.id+"/update")
+          |Edit | 
+        a(href="/users/"+user.id+"/delete")
+          |Delete

@@ -1,0 +1,59 @@
+extends ../../layout
+
+block content
+  h1= title
+  .col-sm-8   
+    .jumbotron
+      form(action="" method="post")
+        |First Name:
+        br
+        input(type="text" name="firstName" placeholder="First Name")
+        br
+        |Last Name:
+        br
+        input(type="text" name="lastName" placeholder="Last Name")
+        br
+        |UserName:
+        br
+        input(type="text" name="userName" placeholder="User Name")
+        br
+        |Email:
+        br
+        input(type="text" name="email" placeholder="Email")
+        br
+        |Profile:
+        br
+        select(name="profileId" id="profile")
+          each profile in profiles
+            option(value=profile.id)
+              =profile.name
+        br
+        |Role:
+        br
+        select(name="roleId" id="role")
+          each role in roles
+            option(value=role.id)
+              =role.name
+        br
+        |Department:
+        br
+        select(name="departmentId" id="department")
+          each department in departments
+            option(value=department.id)
+              =department.name
+        br
+        |Current Business:
+        br
+        select(name="currentBusinessId" id="currentBusiness")
+          each business in businesses
+            option(value=business.id)
+              =business.name
+        br
+        |Permissions:
+        br
+        each permission in permissions
+          input(type="checkbox" class='permissionCheckbox' name="permissions" id=permission.id value=permission.id)
+          =permission.name
+          br
+        br
+        input(type="submit")

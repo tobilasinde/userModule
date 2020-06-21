@@ -1,0 +1,32 @@
+extends ../../layout
+
+block content
+  h1= title
+  h3
+    |Full Name: 
+    =user.firstName + " " + user.lastName
+    br
+  a(href="/users/"+modules.id+"/update")
+    |Edit 
+  || 
+  a(href="/users/"+modules.id+"/delete")
+    |Delete
+  br
+  each user in modules
+    h4
+      |Business: 
+      =user.Business.name
+      br
+    |Role: 
+    =user.Role.name
+    br
+    |Profile: 
+    =user.Profile.name
+    br
+    |Department: 
+    =user.Department.name
+    br
+    |Date Joined: 
+    =moment(user.createdAt).format('lll')
+    br
+    

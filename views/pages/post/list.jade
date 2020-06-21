@@ -1,0 +1,22 @@
+extends ../../layout
+
+block content
+  h1= title
+  h1
+    a(href="/posts/create") Create Post
+  ol
+    each post in posts
+      li
+        |Post Title: 
+        a(href="/posts/"+post.id+"/details")
+          =post.postTitle
+        br
+        |Post Body: 
+        =post.postBody
+        br
+        a(href="/posts/"+post.id+"/update")
+          |Edit 
+        || 
+        a(href="/posts/"+post.id+"/delete")
+          |Delete
+      br

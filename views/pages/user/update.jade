@@ -1,0 +1,25 @@
+extends ../../layout
+
+block content
+  h1= title
+  .col-sm-8   
+    .jumbotron
+      form(action="" method="post")
+        |First Name:
+        br
+        input(type="text" name="firstName" value=user.firstName)
+        br
+        |Last Name:
+        br
+        input(type="text" name="lastName" value=user.lastName)
+        br
+        |UserName:
+        br
+        input(type="text" name="userName" value=user.userName)
+        br
+        |Email:
+        br
+        input(type="text" name="email" value=user.email)
+        br
+        br
+        input(type="submit")
