@@ -8,17 +8,17 @@ module.exports = {
       storage: ":memory:"
     },
     dev: {
-      username: "starlight",
-      password: "14/56Ee241",
-      database: "usermodule",
-      host: "localhost",
+      username: "manifestUser",
+      password: "manifestPassword",
+      database: "tonyusermodule",
+      host: "manifestdbinstance.cgq0reqixqsd.us-east-1.rds.amazonaws.com",
       dialect: 'postgres'
     },
     production: {
-      username: "starlight",
-      password: "14/56Ee241",
-      database: "usermodule",
-      host: "localhost",
+      username: "manifestUser",
+      password: "manifestPassword",
+      database: "tonyusermodule",
+      host: "manifestdbinstance.cgq0reqixqsd.us-east-1.rds.amazonaws.com",
       dialect: 'postgres'
     }
     // ,
