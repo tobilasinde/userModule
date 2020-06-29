@@ -11,14 +11,16 @@ exports.post_create_get = async function(req, res, next) {
 // Handle post create on POST.
 exports.post_create_post = async function(req, res, next) {
  try {
+     var user = await models.User.findOne({where: {id: req.body.UserId}});
      var modules = await models.Module.findOne({where: {
          UserId: req.body.UserId,
-         BusinessId: req.body.BusinessId
+         BusinessId: user.currentBusinessId
      }});
     models.Post.create({
         postTitle: req.body.postTitle,
         postBody: req.body.postBody,
-        ModuleId: modules.id
+        ModuleId: modules.id,
+        BusinessId: user.currentBusinessId
     }).then(function(){
         res.redirect('/posts');
     });
@@ -109,12 +111,12 @@ exports.post_detail = function(req, res, next) {
     else {
         models.Post.findByPk(
             req.params.post_id,
-            
+            {
+                include: [{
+                    model: models.Module
+                }]
+            }
         ).then(function(post) {
-            // console.log(post);
-            // console.log("This is the post user's firstname " + post.User.first_name);
-            // console.log("This is the post comments" + post.Comments[0].title);
-            // renders an inividual post details page
             res.render('pages/post/detail', { title: 'Post Details', post: post });
             console.log("Post deteials renders successfully");
         });

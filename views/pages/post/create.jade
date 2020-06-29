@@ -20,12 +20,5 @@ block content
             option(value=user.id)
               =user.userName
         br
-        |Business:
-        br
-        select(name="BusinessId" id="business")
-          each business in businesses
-            option(value=business.id)
-              =business.name
-        br
         br
         input(type="submit")

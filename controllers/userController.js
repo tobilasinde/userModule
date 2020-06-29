@@ -22,8 +22,10 @@ exports.user_create_post = async function(req, res, next) {
         firstName: req.body.firstName,
         lastName: req.body.lastName,
         userName: req.body.userName,
-        email: req.body.email
+        email: req.body.email,
+        currentBusinessId: req.body.CurrentBusinessId
         });
+    // creating module
      const module = await models.Module.create({
         UserId: user.id,
         RoleId: req.body.roleId,
@@ -37,8 +39,8 @@ exports.user_create_post = async function(req, res, next) {
          if(permissionList.length === 1) {
              const permission = await models.Permission.findByPk(permissionList);
              if (!permission) {
-                 await model.Module.destroy({where: {id: module.id}});
-                 await model.User.destroy({where: {id: user.id}});
+                 await models.Module.destroy({where: {id: module.id}});
+                 await models.User.destroy({where: {id: user.id}});
                  return res.status(422).json({status: false, error: 'Cannot find that selected permission'});
              }
              console.log("adding it now");
@@ -48,8 +50,8 @@ exports.user_create_post = async function(req, res, next) {
                  await permissionList.forEach(async (id) => {
                      const permission = await models.Permission.findByPk(id);
                      if (!permission) {
-                        await model.Module.destroy({where: {id: module.id}});
-                        await model.User.destroy({where: {id: user.id}});
+                        await models.Module.destroy({where: {id: module.id}});
+                        await models.User.destroy({where: {id: user.id}});
                         return res.status(422).json({status: false, error: 'Cannot find that selected permission'});
                     }
                     await module.addPermission(permission);
@@ -85,7 +87,7 @@ exports.user_create_post = async function(req, res, next) {
                 if(permissionList.length === 1) {
                     const permission = await models.Permission.findByPk(permissionList);
                     if (!permission) {
-                        model.Module.destroy({where: {id: module.id}});
+                        models.Module.destroy({where: {id: module.id}});
                         return res.status(422).json({status: false, error: 'Cannot find that selected permission'});
                     }
                     await module.addPermission(permission);
@@ -243,7 +245,7 @@ exports.user_update_post = function(req, res, next) {
 
 
 };
-
+ 
 // Display detail page for a specific post.
 exports.user_detail = async function(req, res, next) {
     if (!req.params.user_id.match(/^[0-9]+$/)) {
